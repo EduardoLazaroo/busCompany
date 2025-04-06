@@ -3,6 +3,8 @@
   "include": ["**/*.ts"],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["cypress", "node"]
+    "types": ["cypress", "node"],
+    "target": "es2022",
+    "lib": ["es2022", "dom"]
   }
 }

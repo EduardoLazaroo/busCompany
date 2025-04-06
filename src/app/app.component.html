@@ -1,3 +1,8 @@
-<ion-app>
+<div *ngIf="isAuthenticated(); else isnt">
   <ion-router-outlet></ion-router-outlet>
-</ion-app>
+</div>
+
+<ng-template #isnt>
+  <app-navbar></app-navbar>
+  <router-outlet></router-outlet>
+</ng-template>

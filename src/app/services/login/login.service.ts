@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from '../auth/account.service';
 import { AuthServerProvider } from '../auth/auth-jwt.service';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,26 +14,14 @@ export class LoginService {
     private translate: TranslateService,
   ) {}
 
-  login(credentials, callback?) {
+  login(account: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.authServerProvider.login(credentials).subscribe(
-        data => {
-          this.accountService.identity(true).then(account => {
-            // After the login the language will be changed to
-            // the language selected by the user during his registration
-            if (account !== null) {
-              this.translate.use(account.langKey);
-            }
-            resolve(data);
-          });
-          return callback?.();
-        },
-        err => {
-          this.logout();
-          reject(err);
-          return callback?.(err);
-        },
-      );
+      // autenticação fake
+      if (account.username === 'admin' && account.password === 'admin') {
+        resolve({ token: 'fake-token', username: account.username });
+      } else {
+        reject('Credenciais inválidas');
+      }
     });
   }
 

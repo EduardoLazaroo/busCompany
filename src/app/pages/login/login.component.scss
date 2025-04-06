@@ -1,0 +1,33 @@
+.container {
+  max-width: 350px;
+  margin: auto;
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+
+  .login-content{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+
+    .logo {
+      width: 160px;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 25px;
+    }
+
+    h2 {
+      font-size: 32px;
+      font-weight: bold;
+      color: #27445D;
+    }
+  }
+
+  div .forgot-password{
+    display: flex;
+    justify-content: flex-end;
+  }
+}

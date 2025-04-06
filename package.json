@@ -50,6 +50,7 @@
     "@ionic/pwa-elements": "^3.3.0",
     "@ngx-translate/core": "16.0.4",
     "@ngx-translate/http-loader": "16.0.1",
+    "core-js": "^3.41.0",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.2",
     "zone.js": "~0.14.6"
@@ -85,7 +86,7 @@
     "lint-staged": "15.5.0",
     "prettier": "3.5.3",
     "prettier-plugin-packagejson": "2.5.10",
-    "typescript": "~5.5.3",
+    "typescript": "5.5",
     "typescript-eslint": "8.29.0"
   }
 }

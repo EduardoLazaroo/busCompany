@@ -1,0 +1,20 @@
+<div class="ct">
+  <div class="select-city-container">
+    <div class="info description-green">
+      <span>Para prosseguirmos, é necessário que você selecione a cidade à qual pertence e a empresa correspondente..</span>
+    </div>
+    <div class="d-flex-colunm">
+      <label class="form-label">Selecione a cidade</label>
+      <select class="form-select" id="motivo" name="motivo">
+        <option [value]="null"></option>
+        <option *ngFor="let city of cities" [value]="city.name">
+          {{ city.name }}
+        </option>
+      </select>
+    </div>
+
+    <!-- <div *ngIf="city.name.filho">
+
+    </div> -->
+  </div>
+</div>

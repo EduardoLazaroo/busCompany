@@ -17,6 +17,11 @@ export class AppComponent {
     this.initializeApp();
   }
 
+  isAuthenticated(): boolean {
+    return false;
+    // todo: Arrumar a autenticação
+  }
+
   initializeApp() {
     this.platform.ready().then(async () => {
       if (Capacitor.isPluginAvailable('StatusBar')) {
