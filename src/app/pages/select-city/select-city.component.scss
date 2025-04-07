@@ -1,5 +1,93 @@
-.select-city-container{
+.select-city-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  .company-content {
+    display: flex;
+    flex-direction: column;
+
+    .company-infor {
+      display: flex;
+      gap: 0.5rem;
+      border-radius: 5px;
+      box-shadow: 1px 5px 8px 0 rgba(0, 0, 0, 0.2);
+      border: 1px solid #80808066;
+      background-color: white;
+      padding: 12px;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &.selected {
+        border: 1px solid #27445d;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+      }
+
+
+      .company-logo {
+        width: 50px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.go-to-register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  .logo {
+    width: 85vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content-info {
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+      color: var(--primary-color);
+      font-weight: bold;
+      font-size: 24px;
+    }
+  }
+
+  button {
+    min-width: 150px;
+  }
+}
+
+.register-two {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+
+  .gerais, .endereco {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 1rem;
+
+    .title-upscale {
+      font-weight: 500;
+      font-size: 18px;
+      color: #606060;
+    }
+  }
+}
+
+.b-o {
+  position: absolute;
+  bottom: 20px;
+  justify-self: anchor-center;
 }

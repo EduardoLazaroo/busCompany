@@ -11,16 +11,39 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './select-city.component.scss',
 })
 export class SelectCityComponent {
+  selectedCity: any = null;
+  selectedCompany: any = null;
+  steps = ['stepOne', 'stepTwo', 'stepThree', 'stepFour'];
+  stepIndex = 0;
+
   cities = [
     {
       name: 'Paraguaçu Paulista',
-      filhos: [{ filho: 'filhote de paraguaçu' }],
+      empresa: [{ nome: 'Ccd Transporte Coletivo', src: 'assets/img/bus/ccd.png' }],
+    },
+    {
+      name: 'Assis',
+      empresa: [{ nome: 'ViaAssis', src: 'assets/img/bus/viaassis.png' }],
     },
   ];
 
-  selectedCity = this.cities[0];
+  get currentStep() {
+    return this.steps[this.stepIndex];
+  }
 
-  onCityChange(event: any) {
-    console.log('Selected city:', event.detail.value);
+  nextStep() {
+    if (this.stepIndex < this.steps.length - 1) this.stepIndex++;
+  }
+
+  prevStep() {
+    if (this.stepIndex > 0) this.stepIndex--;
+  }
+
+  selectCompany(company: any) {
+    this.selectedCompany = company;
+  }
+
+  onCityChange(city: any) {
+    console.log('Cidade selecionada:', city);
   }
 }

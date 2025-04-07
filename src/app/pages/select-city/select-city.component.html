@@ -1,20 +1,104 @@
 <div class="ct">
-  <div class="select-city-container">
+  <div class="select-city-container" *ngIf="currentStep === 'stepOne'">
     <div class="info description-green">
-      <span>Para prosseguirmos, é necessário que você selecione a cidade à qual pertence e a empresa correspondente..</span>
+      <span> Para prosseguirmos, é necessário que você selecione a cidade à qual pertence e a empresa correspondente. </span>
     </div>
+
     <div class="d-flex-colunm">
       <label class="form-label">Selecione a cidade</label>
-      <select class="form-select" id="motivo" name="motivo">
-        <option [value]="null"></option>
-        <option *ngFor="let city of cities" [value]="city.name">
+      <select class="form-select" id="motivo" name="motivo" [(ngModel)]="selectedCity" (ngModelChange)="onCityChange($event)">
+        <option [ngValue]="null">Selecione...</option>
+        <option *ngFor="let city of cities" [ngValue]="city">
           {{ city.name }}
         </option>
       </select>
     </div>
 
-    <!-- <div *ngIf="city.name.filho">
+    <div class="company-content" *ngIf="selectedCity?.empresa?.length">
+      <label class="form-label">Selecione a empresa</label>
+      <div
+        class="company-infor"
+        [class.selected]="selectedCompany === selectedCity.empresa[0]"
+        (click)="selectCompany(selectedCity.empresa[0])"
+      >
+        <img class="company-logo" [src]="selectedCity.empresa[0].src" alt="Logo da empresa" />
+        <span>{{ selectedCity.empresa[0].nome }}</span>
+      </div>
+    </div>
 
-    </div> -->
+    <button class="button primary-blue b-o" *ngIf="selectedCompany" (click)="nextStep()">Próximo</button>
+  </div>
+
+  <div class="go-to-register" *ngIf="currentStep === 'stepTwo'">
+    <img src="assets/img/bus/stepTwo.png" alt="Ilustração de ônibus" class="logo" />
+    <div class="content-info">
+      <h4>Finalize seu cadastro</h4>
+      <span>Para fazer parte do fretado voce precisa concluir seu cadastro, isso leva menos de 5 minutos!</span>
+    </div>
+    <button class="button primary-blue b-o" *ngIf="selectedCompany" (click)="nextStep()">Próximo</button>
+  </div>
+
+  <div class="register-two" *ngIf="currentStep === 'stepThree'">
+    <div class="gerais">
+      <span class="title-upscale">DADOS GERAIS</span>
+
+      <div class="d-flex-column">
+        <label class="form-label">Nome</label>
+        <input class="form-control" type="text" />
+      </div>
+
+      <div class="d-flex-column">
+        <label class="form-label">Celular / WhatsApp</label>
+        <input class="form-control" type="text" />
+      </div>
+    </div>
+
+    <div class="endereco">
+      <span class="title-upscale">ENDEREÇO</span>
+
+      <div class="d-flex-column">
+        <label class="form-label">CEP</label>
+        <input class="form-control" type="text" />
+      </div>
+
+      <div class="d-flex-column">
+        <label class="form-label">Logradouro</label>
+        <input class="form-control" type="text" />
+      </div>
+
+      <div class="d-flex-column">
+        <label class="form-label">Bairro</label>
+        <input class="form-control" type="text" />
+      </div>
+
+      <div class="d-flex gap-1">
+        <div class="d-flex-column w-70">
+          <label class="form-label">Complemento</label>
+          <input class="form-control" type="text" />
+        </div>
+
+        <div class="d-flex-column w-30">
+          <label class="form-label">Numero</label>
+          <input class="form-control" type="number" />
+        </div>
+      </div>
+    </div>
+
+    <div class="btns b-o">
+      <button class="button second-gray" (click)="prevStep()">Voltar</button>
+      <button class="button primary-blue" (click)="nextStep()">Próximo</button>
+    </div>
+  </div>
+
+  <div class="go-to-register" *ngIf="currentStep === 'stepFour'">
+    <img src="assets/img/bus/stepFour.png" alt="Ilustração de ônibus" class="logo" />
+    <div class="content-info">
+      <h4>Pronto!</h4>
+      <span
+        >Agora, basta solicitar o vínculo e aguardar a aprovação da empresa. Se quiser agilizar o processo, você pode entrar em contato
+        diretamente com a empresa.</span
+      >
+    </div>
+    <button class="button primary-blue b-o" *ngIf="selectedCompany" (click)="nextStep()">Solicitar vinculo</button>
   </div>
 </div>

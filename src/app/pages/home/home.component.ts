@@ -13,5 +13,5 @@ import { SelectCityComponent } from '../select-city/select-city.component';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  city = true;
+  isForeign = false;
 }
